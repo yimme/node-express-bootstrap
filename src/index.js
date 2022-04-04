@@ -1,14 +1,16 @@
 import express from 'express';
+import defaultRouter from './routes';
 const server = express();
 
-async function startServer() {
+const PORT = 3030;
+
+const startServer = () => {
 	try {
-		server.listen(3030, () => {
-			console.log('Server running on port 3030');
-		});
+		server.use(defaultRouter);
+		server.listen(PORT);
 	} catch (err) {
 		console.error(err);
 	}
-}
+};
 
 startServer();
